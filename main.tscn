@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://kcewggwym0jy"]
+[gd_scene load_steps=4 format=3 uid="uid://kcewggwym0jy"]
+
+[ext_resource type="PackedScene" uid="uid://ciw41opvp44d5" path="res://Tablet/tablet.tscn" id="1_4ysgs"]
 
 [sub_resource type="Gradient" id="Gradient_25lx6"]
 interpolation_mode = 2
@@ -30,3 +32,19 @@ rotation_smoothing_enabled = true
 position = Vector2(300, 400)
 texture = SubResource("GradientTexture2D_snoj0")
 offset = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Tablet" parent="." instance=ExtResource("1_4ysgs")]
+position = Vector2(5, 563)
+scale = Vector2(0.296211, 0.296211)
+
+[node name="Tablet2" parent="." instance=ExtResource("1_4ysgs")]
+position = Vector2(207, 564)
+scale = Vector2(0.296211, 0.296211)
+
+[node name="Tablet3" parent="." instance=ExtResource("1_4ysgs")]
+position = Vector2(403, 563)
+scale = Vector2(0.296211, 0.296211)
+
+[node name="Tablet4" parent="." instance=ExtResource("1_4ysgs")]
+position = Vector2(206, 188)
+scale = Vector2(0.296211, 0.296211)

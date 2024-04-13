@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciw41opvp44d5"]
+
+[ext_resource type="Texture2D" uid="uid://w7schjc4ttep" path="res://Art/Square.png" id="1_w7r2b"]
+[ext_resource type="Script" path="res://Tablet/DrawArea.gd" id="2_4i2fg"]
+
+[node name="Tablet" type="Node2D"]
+
+[node name="Art" type="Sprite2D" parent="."]
+modulate = Color(0.72549, 0.72549, 0.72549, 1)
+position = Vector2(303, 463)
+scale = Vector2(1.72892, 2.61712)
+texture = ExtResource("1_w7r2b")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(288, 447)
+script = ExtResource("2_4i2fg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(15, 2)
+polygon = PackedVector2Array(-185, -292, -222, -245, -220, 348, 222, 347, 220, -256, 147, -304, 54, -322, -98, -310)
+
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]

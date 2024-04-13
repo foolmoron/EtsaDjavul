@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://kcewggwym0jy"]
+
+[sub_resource type="Gradient" id="Gradient_25lx6"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.587662, 0.99026)
+colors = PackedColorArray(0.174886, 0.00652578, 0.649351, 1, 0, 0.423529, 1, 1, 0.450676, 0.737001, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_snoj0"]
+gradient = SubResource("Gradient_25lx6")
+width = 600
+height = 800
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(300, 400)
+limit_left = 0
+limit_top = 0
+limit_right = 600
+limit_bottom = 800
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(300, 400)
+texture = SubResource("GradientTexture2D_snoj0")
+offset = Vector2(2.08165e-12, 2.08165e-12)

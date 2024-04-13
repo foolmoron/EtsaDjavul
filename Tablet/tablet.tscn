@@ -1,16 +1,16 @@
 [gd_scene load_steps=8 format=3 uid="uid://ciw41opvp44d5"]
 
-[ext_resource type="Script" path="res://Tablet/Tablet.gd" id="1_a72sf"]
+[ext_resource type="Script" path="res://Tablet/Tablet.gd" id="1_e0n7h"]
 [ext_resource type="Texture2D" uid="uid://w7schjc4ttep" path="res://Art/Square.png" id="1_w7r2b"]
-[ext_resource type="Resource" uid="uid://dvsa3hmuosogw" path="res://Runes/KA.tres" id="2_0mxo3"]
 [ext_resource type="Script" path="res://Tablet/DrawArea.gd" id="2_4i2fg"]
-[ext_resource type="Resource" uid="uid://chwu1ykkfyxyv" path="res://Runes/KE.tres" id="3_mn58i"]
-[ext_resource type="Resource" uid="uid://pus65xylqxp1" path="res://Runes/BA.tres" id="4_gaio1"]
-[ext_resource type="PackedScene" uid="uid://bhi7bucq4cdmf" path="res://drawing_line.tscn" id="7_pk46w"]
+[ext_resource type="Resource" uid="uid://dvsa3hmuosogw" path="res://Runes/KA.tres" id="2_bywqk"]
+[ext_resource type="Resource" uid="uid://chwu1ykkfyxyv" path="res://Runes/KE.tres" id="3_ilr0v"]
+[ext_resource type="Resource" uid="uid://pus65xylqxp1" path="res://Runes/BA.tres" id="4_et2ys"]
+[ext_resource type="PackedScene" uid="uid://bhi7bucq4cdmf" path="res://Tablet/drawing_line.tscn" id="7_pk46w"]
 
 [node name="Tablet" type="Node2D"]
-script = ExtResource("1_a72sf")
-runes = Array[Resource("res://Runes/Rune.gd")]([ExtResource("2_0mxo3"), ExtResource("3_mn58i"), ExtResource("4_gaio1")])
+script = ExtResource("1_e0n7h")
+runes = Array[Resource("res://Runes/Rune.gd")]([ExtResource("2_bywqk"), ExtResource("3_ilr0v"), ExtResource("4_et2ys")])
 
 [node name="Art" type="Sprite2D" parent="."]
 modulate = Color(0.72549, 0.72549, 0.72549, 1)

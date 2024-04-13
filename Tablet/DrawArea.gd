@@ -4,14 +4,19 @@ extends Area2D
 @export_range(0, 100) var min_dist := 30.0
 @export var line_scn: PackedScene
 
+@onready var tablet := get_parent() as Tablet
+
 var lines: Array[Line2D] = []
 var is_drawing := false
 
-@onready var tablet := get_parent() as Tablet
+var world_bounds: Rect2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	world_bounds = Rect2($CollisionPolygon2D.to_global($CollisionPolygon2D.polygon[0]), Vector2(0, 0))
+	for p in $CollisionPolygon2D.polygon:
+		world_bounds = world_bounds.expand($CollisionPolygon2D.to_global(p))
+	print(world_bounds)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,8 +38,10 @@ func _on_input_event(viewport, event, shape_idx):
 	if not is_drawing and event is InputEventMouseButton:
 		var evt := event as InputEventMouseButton
 		if event.button_index == MOUSE_BUTTON_LEFT and evt.is_pressed():
-			var line = line_scn.instantiate()
+			var line = line_scn.instantiate() as Line2D
 			add_child(line)
+			line.material.set_shader_parameter("base_pos", world_bounds.position)
+			line.material.set_shader_parameter("base_size", world_bounds.size)
 			line.clear_points()
 			line.add_point(to_local(get_global_mouse_position()))
 			lines.append(line)

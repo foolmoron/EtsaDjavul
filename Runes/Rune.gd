@@ -6,7 +6,7 @@ extends Resource
 const MIN_DIST := 0.01
 const MIN_DIST_SQ := MIN_DIST*MIN_DIST
 
-var rect: Rect2 = Rect2(0, 0, 0, 0)
+var rect: Rect2
 var points_normalized: PackedVector2Array = []
 var points_normalized_vflip: PackedVector2Array = []
 
@@ -15,6 +15,7 @@ func on_ready():
     if did_ready:
         return
     did_ready = true
+    rect = Rect2(strokes[0][0], Vector2(0, 0))
     for s in strokes:
         for p in s:
             rect = rect.expand(p)

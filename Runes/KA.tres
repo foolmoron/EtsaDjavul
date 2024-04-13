@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Rune" load_steps=2 format=3 uid="uid://dvsa3hmuosogw"]
+
+[ext_resource type="Script" path="res://Runes/Rune.gd" id="1_k1psn"]
+
+[resource]
+script = ExtResource("1_k1psn")
+strokes = Array[PackedVector2Array]([PackedVector2Array(-64, 303, -62, 275, -62, 245, -62, 213, -60, 183, -60, 151, -60, 119, -64, 89, -66, 59, -66, 29, -66, -3, -66, -35, -68, -65, -64, -95, -62, -125, -62, -157, -62, -189, -38, -169, -18, -147, 2, -123, 20, -97, 42, -79, 64, -57, 82, -33, 104, -11, 74, -1, 42, -1, 10, -1, -22, -1, -52, -3, -62, -5)])

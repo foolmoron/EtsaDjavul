@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://kcewggwym0jy"]
 
-[ext_resource type="PackedScene" uid="uid://ciw41opvp44d5" path="res://Tablet/tablet.tscn" id="1_4ysgs"]
+[ext_resource type="PackedScene" uid="uid://ciw41opvp44d5" path="res://Tablet/Tablet.tscn" id="1_4ysgs"]
 
 [sub_resource type="Gradient" id="Gradient_25lx6"]
 interpolation_mode = 2

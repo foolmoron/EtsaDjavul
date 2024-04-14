@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dii2mwatui4bc"]
+[gd_scene load_steps=12 format=3 uid="uid://dii2mwatui4bc"]
 
 [ext_resource type="Script" path="res://Tablet/Level.gd" id="1_71apm"]
 [ext_resource type="Script" path="res://Tablet/DrawArea.gd" id="2_e4nei"]
@@ -24,10 +24,18 @@ font_color = Color(0.254902, 0.254902, 0.254902, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yap3f"]
 size = Vector2(441.111, 612.222)
 
+[sub_resource type="Gradient" id="Gradient_lbnbc"]
+offsets = PackedFloat32Array(0, 0.287293, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_a7wen"]
+colors = PackedColorArray(0.286157, 0.286157, 0.286157, 1, 0.493211, 0.493211, 0.493211, 1)
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_71apm")
 complete_shadow_color = Color(0.941176, 0.831373, 0.215686, 1)
 complete_text_color = Color(1, 0.964706, 0.0627451, 1)
+complete_line_color = Color(0.678431, 0.054902, 0.0431373, 1)
 
 [node name="Shadow" type="Polygon2D" parent="."]
 position = Vector2(293.137, 394.698)
@@ -75,6 +83,21 @@ hint_line_scn = ExtResource("6_ejwsa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DrawArea"]
 position = Vector2(5, -12.7778)
 shape = SubResource("RectangleShape2D_yap3f")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="DrawArea"]
+emitting = false
+amount = 40
+lifetime = 1.2
+lifetime_randomness = 0.3
+direction = Vector2(2.08165e-12, -1)
+spread = 42.65
+gravity = Vector2(2.08165e-12, 670)
+initial_velocity_min = 528.38
+initial_velocity_max = 921.41
+scale_amount_min = 1.49
+scale_amount_max = 2.79
+color_ramp = SubResource("Gradient_lbnbc")
+color_initial_ramp = SubResource("Gradient_a7wen")
 
 [node name="CameraTarget" type="Node2D" parent="."]
 position = Vector2(300, 400)

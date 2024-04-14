@@ -2,6 +2,7 @@ class_name DrawArea
 extends Area2D
 
 const MAX_ERROR = 0.09
+const EMISSION_TIME = 0.1
 
 @export_range(0, 100) var min_dist := 30.0
 @export var line_scn: PackedScene
@@ -13,8 +14,11 @@ const MAX_ERROR = 0.09
 
 @export var DEBUG_STROKES: Array[PackedVector2Array] = []
 
+var orig_line_color: Color
+
 var lines: Array[Line2D] = []
 var is_drawing := false
+var emission_time_left := 0.0
 
 var world_bounds: Rect2
 
@@ -23,6 +27,7 @@ func _ready():
 	var dummy := line_scn.instantiate() as Line2D
 	add_child(dummy)
 	dummy.scale = Vector2(0, 0)
+	orig_line_color = dummy.default_color
 	world_bounds = Rect2(to_global(bounds.position), Vector2(0, 0)).expand(to_global(bounds.end))
 	
 	# spawn hint
@@ -40,8 +45,8 @@ func _ready():
 		for ps in saved_lines:
 			var line = line_scn.instantiate() as Line2D
 			container.add_child(line)
-			line.material.set_shader_parameter("base_pos", world_bounds.position)
-			line.material.set_shader_parameter("base_size", world_bounds.size)
+			# line.material.set_shader_parameter("base_pos", world_bounds.position)
+			# line.material.set_shader_parameter("base_size", world_bounds.size)
 			var p := 0
 			line.clear_points()
 			while p < ps.size():
@@ -67,9 +72,17 @@ func _process(delta):
 		var line = lines[lines.size() - 1]
 		if line.get_point_count() == 1 or line.get_point_position(line.get_point_count() - 2).distance_squared_to(mouse_local) > min_dist * min_dist:
 			line.add_point(mouse_local)
+			$CPUParticles2D.position = mouse_local
+			emission_time_left = EMISSION_TIME
 		else:
 			line.set_point_position(line.get_point_count() - 1, mouse_local)
-	pass
+	
+	# emission
+	if emission_time_left > 0.0:
+		emission_time_left -= delta
+		$CPUParticles2D.emitting = true
+	else:
+		$CPUParticles2D.emitting = false
 
 
 func _on_input_event(viewport, event, shape_idx):
@@ -82,14 +95,17 @@ func _on_input_event(viewport, event, shape_idx):
 			elif not is_drawing:
 				var line = line_scn.instantiate() as Line2D
 				container.add_child(line)
-				line.material.set_shader_parameter("base_pos", world_bounds.position)
-				line.material.set_shader_parameter("base_size", world_bounds.size)
+				# line.material.set_shader_parameter("base_pos", world_bounds.position)
+				# line.material.set_shader_parameter("base_size", world_bounds.size)
 				line.clear_points()
-				line.add_point(to_local(get_global_mouse_position()))
+				var mouse_local := to_local(get_global_mouse_position())
+				line.add_point(mouse_local)
 				lines.append(line)
 				is_drawing = true
 				level.complete = false
 				level.update_colors()
+				$CPUParticles2D.position = mouse_local
+				emission_time_left = EMISSION_TIME
 
 func check_drawing():
 	DEBUG_STROKES.clear()

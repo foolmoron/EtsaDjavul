@@ -7,6 +7,7 @@ extends Node2D
 @export var phrase: Array[RuneSequenceEntry] = []
 @export var complete_shadow_color: Color = Color.WHITE
 @export var complete_text_color: Color = Color.WHITE
+@export var complete_line_color: Color = Color.WHITE
 @export var hint: Array[PackedVector2Array] = []
 
 @onready var orig_shadow_color: Color = $Shadow.color
@@ -88,3 +89,5 @@ func update_colors():
 	$Shadow.color = complete_shadow_color if ever_completed else orig_shadow_color
 	$LevelLabel.label_settings.font_color = complete_text_color if complete else orig_text_color
 	$PhraseLabel.label_settings.font_color = complete_text_color if complete else orig_text_color
+	for l: Line2D in $DrawArea.lines:
+		l.default_color = complete_line_color if complete else $DrawArea.orig_line_color

@@ -51,7 +51,7 @@ func get_save() -> Dictionary:
 			save.completed = []
 		if not save.has("completed_id"):
 			save.completed_id = 0
-		save.completed_id = 999
+		# save.completed_id = 999
 	return save
 
 func do_save():

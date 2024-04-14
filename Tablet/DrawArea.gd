@@ -1,7 +1,6 @@
 class_name DrawArea
 extends Area2D
 
-const MAX_ERROR = 0.09
 const EMISSION_TIME = 0.1
 
 @export_range(0, 100) var min_dist := 30.0
@@ -183,7 +182,7 @@ func check_drawing():
 		var best_rune = res[0]
 		var best_error = sqrt(-res[1])
 		sequence.append(best_rune[0])
-		if best_error > MAX_ERROR:
+		if best_error > best_rune[0].rune.max_error:
 			ruined = true
 		print("\t%s: %.3f" % [best_rune[2], best_error])
 

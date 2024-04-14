@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_h4cyp")
+max_error = 0.05
 text = "BO"
 text_plural = "BOS"
 text_genitive = "BOEF"

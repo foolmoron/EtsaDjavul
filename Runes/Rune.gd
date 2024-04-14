@@ -1,6 +1,7 @@
 class_name Rune
 extends Resource
 
+@export_range(0.0, 0.1, 0.01) var max_error = 0.09
 @export var text = ""
 @export var text_plural = ""
 @export var text_genitive = ""

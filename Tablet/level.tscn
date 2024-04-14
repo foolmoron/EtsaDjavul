@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dii2mwatui4bc"]
+[gd_scene load_steps=10 format=3 uid="uid://dii2mwatui4bc"]
 
 [ext_resource type="Script" path="res://Tablet/Level.gd" id="1_71apm"]
 [ext_resource type="Script" path="res://Tablet/DrawArea.gd" id="2_e4nei"]
 [ext_resource type="FontFile" uid="uid://cmfhcqnjxi2dk" path="res://Art/SpectralSC-BoldItalic.ttf" id="2_li5js"]
 [ext_resource type="PackedScene" uid="uid://bhi7bucq4cdmf" path="res://Tablet/drawing_line.tscn" id="3_g50de"]
 [ext_resource type="FontFile" uid="uid://dwidlnm4oscog" path="res://Art/SpectralSC-SemiBold.ttf" id="3_itavd"]
+[ext_resource type="PackedScene" uid="uid://c3417xby0vqsn" path="res://Tablet/drawing_line_hint.tscn" id="6_ejwsa"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5htio"]
 resource_local_to_scene = true
@@ -66,6 +67,7 @@ scale = Vector2(0.9, 0.9)
 script = ExtResource("2_e4nei")
 min_dist = 16.0
 line_scn = ExtResource("3_g50de")
+hint_line_scn = ExtResource("6_ejwsa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DrawArea"]
 position = Vector2(5, -12.7778)

@@ -7,6 +7,7 @@ extends Node2D
 @export var phrase: Array[RuneSequenceEntry] = []
 @export var complete_shadow_color: Color = Color.WHITE
 @export var complete_text_color: Color = Color.WHITE
+@export var hint: Array[PackedVector2Array] = []
 
 @onready var orig_shadow_color: Color = $Shadow.color
 @onready var orig_text_color: Color = $LevelLabel.label_settings.font_color

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3417xby0vqsn"]
+
+[ext_resource type="PackedScene" uid="uid://bhi7bucq4cdmf" path="res://Tablet/drawing_line.tscn" id="1_6ersc"]
+
+[node name="DrawingLine" instance=ExtResource("1_6ersc")]
+material = null
+default_color = Color(0.709804, 0.709804, 0.709804, 1)

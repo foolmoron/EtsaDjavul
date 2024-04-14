@@ -5,10 +5,13 @@ const MAX_ERROR = 0.09
 
 @export_range(0, 100) var min_dist := 30.0
 @export var line_scn: PackedScene
+@export var hint_line_scn: PackedScene
 
 @onready var level := get_parent() as Level
 @onready var bounds := $CollisionShape2D.shape.get_rect() as Rect2
 @onready var container := $CollisionShape2D
+
+@export var DEBUG_STROKES: Array[PackedVector2Array] = []
 
 var lines: Array[Line2D] = []
 var is_drawing := false
@@ -21,7 +24,17 @@ func _ready():
 	add_child(dummy)
 	dummy.scale = Vector2(0, 0)
 	world_bounds = Rect2(to_global(bounds.position), Vector2(0, 0)).expand(to_global(bounds.end))
+	
+	# spawn hint
+	if level.hint != null and level.hint.size() > 0:
+		for ps in level.hint:
+			var line = hint_line_scn.instantiate() as Line2D
+			container.add_child(line)
+			line.clear_points()
+			for p in ps:
+				line.add_point(p)
 
+	# spawn saved
 	if GameManager.inst.get_save().has("linepts_"+level.level_name):
 		var saved_lines = GameManager.inst.get_save()["linepts_"+level.level_name]
 		for ps in saved_lines:
@@ -79,6 +92,10 @@ func _on_input_event(viewport, event, shape_idx):
 				level.update_colors()
 
 func check_drawing():
+	DEBUG_STROKES.clear()
+	for l in lines:
+		DEBUG_STROKES.append(l.points)
+
 	var aa := Time.get_ticks_usec()
 	const TOUCH_LEEWAY = 12.0
 	var touchings = {}

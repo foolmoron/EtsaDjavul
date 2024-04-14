@@ -661,24 +661,25 @@ position = Vector2(425, 228)
 scale = Vector2(0.143, 0.143)
 level_name = "XXXIV"
 phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_ox0nj"), SubResource("Resource_modlm")])
+complete_line_color = Color(0.678431, 0.054902, 0.0431373, 1)
 
 [node name="Level35" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(510, 228)
 scale = Vector2(0.143, 0.143)
 level_name = "YOU WIN"
 
-[node name="Shadow" parent="Level35" index="0"]
+[node name="Shadow" parent="Level35" index="1"]
 visible = false
 
-[node name="Rock" parent="Level35" index="1"]
+[node name="Rock" parent="Level35" index="2"]
 visible = false
 
-[node name="LevelLabel" parent="Level35" index="2"]
+[node name="LevelLabel" parent="Level35" index="3"]
 offset_top = 400.0
 offset_bottom = 760.0
 label_settings = SubResource("LabelSettings_dtert")
 
-[node name="PhraseLabel" parent="Level35" index="3"]
+[node name="PhraseLabel" parent="Level35" index="4"]
 label_settings = SubResource("LabelSettings_11ee2")
 
 [node name="Title" type="Label" parent="."]

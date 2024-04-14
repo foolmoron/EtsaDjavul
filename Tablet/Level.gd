@@ -85,6 +85,7 @@ func do_complete():
 	complete = true
 	ever_completed = true
 	update_colors()
+	$WinAudio.play(0.0)
 	if not GameManager.inst.save.completed.has(level_name):
 		GameManager.inst.save.completed.append(level_name)
 	if level_id > GameManager.inst.save.completed_id:

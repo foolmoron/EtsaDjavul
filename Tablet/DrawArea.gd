@@ -80,8 +80,10 @@ func _process(delta):
 	if emission_time_left > 0.0:
 		emission_time_left -= delta
 		$CPUParticles2D.emitting = true
+		$DrawAudio.playing = true
 	else:
 		$CPUParticles2D.emitting = false
+		$DrawAudio.playing = false
 
 
 func _on_input_event(viewport, event, shape_idx):

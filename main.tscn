@@ -26,7 +26,7 @@ script = ExtResource("7_ef4bo")
 rune = ExtResource("3_lxc4q")
 plural = true
 negative = true
-genitive = true
+genitive = false
 
 [sub_resource type="Resource" id="Resource_jkp1n"]
 script = ExtResource("7_ef4bo")
@@ -39,7 +39,7 @@ genitive = false
 script = ExtResource("7_ef4bo")
 rune = ExtResource("4_qxw0r")
 plural = false
-negative = true
+negative = false
 genitive = true
 
 [sub_resource type="Resource" id="Resource_8fg0p"]
@@ -47,7 +47,7 @@ script = ExtResource("7_ef4bo")
 rune = ExtResource("5_hdu62")
 plural = true
 negative = false
-genitive = true
+genitive = false
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_704a6")
@@ -76,50 +76,78 @@ offset = Vector2(2.08165e-12, 2.08165e-12)
 position = Vector2(7.62939e-06, 640)
 scale = Vector2(0.2, 0.2)
 level_name = "I"
+ever_completed = false
+complete = false
 phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_1t3d6")])
 
 [node name="Level2" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(120, 640)
 scale = Vector2(0.2, 0.2)
 level_name = "II"
+ever_completed = false
+complete = false
 phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_jkp1n"), SubResource("Resource_xrqcr"), SubResource("Resource_8fg0p")])
 
 [node name="Level3" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(240, 640)
 scale = Vector2(0.2, 0.2)
 level_name = "III"
+ever_completed = false
+complete = false
+phrase = Array[ExtResource("7_ef4bo")]([])
 
 [node name="Level4" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(360, 640)
 scale = Vector2(0.2, 0.2)
 level_name = "IV"
+ever_completed = false
+complete = false
+phrase = Array[ExtResource("7_ef4bo")]([])
 
 [node name="Level5" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(483, 640)
 scale = Vector2(0.2, 0.2)
 level_name = "V"
+ever_completed = false
+complete = false
+phrase = Array[ExtResource("7_ef4bo")]([])
 
 [node name="Level6" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(4.54747e-13, 480)
 scale = Vector2(0.2, 0.2)
 level_name = "VI"
+ever_completed = false
+complete = false
+phrase = Array[ExtResource("7_ef4bo")]([])
 
 [node name="Level7" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(120, 480)
 scale = Vector2(0.2, 0.2)
 level_name = "VII"
+ever_completed = false
+complete = false
+phrase = Array[ExtResource("7_ef4bo")]([])
 
 [node name="Level8" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(240, 480)
 scale = Vector2(0.2, 0.2)
 level_name = "VIII"
+ever_completed = false
+complete = false
+phrase = Array[ExtResource("7_ef4bo")]([])
 
 [node name="Level9" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(360, 480)
 scale = Vector2(0.2, 0.2)
 level_name = "IX"
+ever_completed = false
+complete = false
+phrase = Array[ExtResource("7_ef4bo")]([])
 
 [node name="Level10" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(483, 480)
 scale = Vector2(0.2, 0.2)
 level_name = "X"
+ever_completed = false
+complete = false
+phrase = Array[ExtResource("7_ef4bo")]([])

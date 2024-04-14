@@ -1,6 +1,8 @@
 class_name DrawArea
 extends Area2D
 
+const MAX_ERROR = 0.09
+
 @export_range(0, 100) var min_dist := 30.0
 @export var line_scn: PackedScene
 
@@ -19,6 +21,20 @@ func _ready():
 	add_child(dummy)
 	dummy.scale = Vector2(0, 0)
 	world_bounds = Rect2(to_global(bounds.position), Vector2(0, 0)).expand(to_global(bounds.end))
+
+	if GameManager.inst.get_save().has("linepts_"+level.level_name):
+		var saved_lines = GameManager.inst.get_save()["linepts_"+level.level_name]
+		for ps in saved_lines:
+			var line = line_scn.instantiate() as Line2D
+			container.add_child(line)
+			line.material.set_shader_parameter("base_pos", world_bounds.position)
+			line.material.set_shader_parameter("base_size", world_bounds.size)
+			var p := 0
+			line.clear_points()
+			while p < ps.size():
+				line.add_point(Vector2(ps[p], ps[p+1]))
+				p += 2
+			lines.append(line)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -59,6 +75,8 @@ func _on_input_event(viewport, event, shape_idx):
 				line.add_point(to_local(get_global_mouse_position()))
 				lines.append(line)
 				is_drawing = true
+				level.complete = false
+				level.update_colors()
 
 func check_drawing():
 	var aa := Time.get_ticks_usec()
@@ -118,25 +136,48 @@ func check_drawing():
 
 	var bb := Time.get_ticks_usec()
 	print("Best for %s:" % level.name)
+	var sequence: Array[RuneSequenceEntry] = []
+	var ruined := false
 	for drawing in drawings:
 		var runes_to_rank = []
 		for r in RuneManager.inst.all_runes:
-			runes_to_rank.append([r, r.points_normalized, "%s          " % r.resource_path])
-			runes_to_rank.append([r, r.points_normalized_vflip, "%s VFLIP    " % r.resource_path])
-			runes_to_rank.append([r, r.points_normalized_rot, "%s ROT      " % r.resource_path])
-			runes_to_rank.append([r, r.points_normalized_rot_vflip, "%s ROT VFLIP" % r.resource_path])
+			runes_to_rank.append([RuneSequenceEntry.build(r, false, false, false), r.points_normalized,           "%s          " % r.resource_path])
+			runes_to_rank.append([RuneSequenceEntry.build(r, true,  false, false), r.points_normalized_vflip,     "%s VFLIP    " % r.resource_path])
+			runes_to_rank.append([RuneSequenceEntry.build(r, false, true, false),  r.points_normalized_rot,       "%s ROT      " % r.resource_path])
+			runes_to_rank.append([RuneSequenceEntry.build(r, true,  true, false),  r.points_normalized_rot_vflip, "%s ROT VFLIP" % r.resource_path])
 		var res = Util.best_by(runes_to_rank, func(r, best): return -Rune.test_error(drawing, r[1], -best))
 		var best_rune = res[0]
-		var best_error = res[1]
-		print("\t%s: %.3f" % [best_rune[2], sqrt(-best_error)])
+		var best_error = sqrt(-res[1])
+		sequence.append(best_rune[0])
+		if best_error > MAX_ERROR:
+			ruined = true
+		print("\t%s: %.3f" % [best_rune[2], best_error])
 
 	var cc := Time.get_ticks_usec()
 	print("\t\t elapsed a: %sus" % (bb - aa))
 	print("\t\t elapsed b: %sus" % (cc - bb))
 	print("\t\t elapsed c: %sus" % (Time.get_ticks_usec() - cc))
+
+	var correct := not ruined and level.matches_phrase(sequence)
+	if correct:
+		print("CORRECT!!!")
+		level.do_complete()
+		var all_lines: Array[PackedFloat32Array] = []
+		for l in lines:
+			var points: PackedFloat32Array = []
+			for p in l.points:
+				points.append(p.x)
+				points.append(p.y)
+			all_lines.append(points)
+		GameManager.inst.get_save()["linepts_"+level.level_name] = all_lines
+		GameManager.inst.do_save()
+	else:
+		print("not correct")
+
 	queue_redraw()
 
 func clear_drawing():
 	for l in lines:
 		l.queue_free()
 	lines.clear()
+	level.complete = false

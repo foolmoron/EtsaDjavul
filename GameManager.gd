@@ -14,25 +14,51 @@ static var inst: GameManager
 
 var levels: Array[Level] = []
 
+const SAVE_FILE := "user://etsa.save"
+var save = {}
+var save_loaded := false
+
 func _enter_tree():
-    inst = self
+	inst = self
 
 func _ready():
-    for l: Level in find_children("*", "Level", false):
-        levels.append(l)
-        l.level_id = levels.size()
+	for l: Level in find_children("*", "Level", false):
+		levels.append(l)
+		l.level_id = levels.size()
 
 func _process(delta):
-    $Camera2D.global_position = lerp($Camera2D.global_position, pos_target, pos_lerp_speed)
-    $Camera2D.zoom.x = move_toward($Camera2D.zoom.x, zoom_target.x, zoom_lerp_speed * delta)
-    $Camera2D.zoom.y = move_toward($Camera2D.zoom.y, zoom_target.y, zoom_lerp_speed * delta)
+	$Camera2D.global_position = lerp($Camera2D.global_position, pos_target, pos_lerp_speed)
+	$Camera2D.zoom.x = move_toward($Camera2D.zoom.x, zoom_target.x, zoom_lerp_speed * delta)
+	$Camera2D.zoom.y = move_toward($Camera2D.zoom.y, zoom_target.y, zoom_lerp_speed * delta)
+
+func get_save() -> Dictionary:
+	if not save_loaded:
+		save_loaded = true
+		if not FileAccess.file_exists(SAVE_FILE):
+			save = {}
+		else:
+			var json := JSON.new()
+			var str := FileAccess.get_file_as_string(SAVE_FILE)
+			var res := json.parse(str)
+			if not res == OK:
+				save = {}
+			else:
+				save = json.get_data()
+		# init
+		if not save.has("completed"):
+			save.completed = []
+	return save
+
+func do_save():
+	var file := FileAccess.open(SAVE_FILE, FileAccess.WRITE)
+	file.store_string(JSON.stringify(get_save()))
 
 func set_level(level: int):
-    current_level = level
-    if level > 0:
-        pos_target = levels[level-1].get_node("CameraTarget").global_position
-        var zoom := 1.0 / levels[level-1].scale.x
-        zoom_target = Vector2(zoom, zoom)
-    else:
-        pos_target = pos_orig
-        zoom_target = zoom_orig
+	current_level = level
+	if level > 0:
+		pos_target = levels[level-1].get_node("CameraTarget").global_position
+		var zoom := 1.0 / levels[level-1].scale.x
+		zoom_target = Vector2(zoom, zoom)
+	else:
+		pos_target = pos_orig
+		zoom_target = zoom_orig

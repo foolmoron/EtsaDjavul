@@ -5,6 +5,8 @@ extends Resource
 @export var text_plural = ""
 @export var text_genitive = ""
 @export var text_genitive_plural = ""
+@export var text_accusative = ""
+@export var text_accusative_plural = ""
 @export var neg_prefix = ""
 @export var strokes: Array[PackedVector2Array] = []
 

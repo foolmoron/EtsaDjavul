@@ -11,6 +11,8 @@ const EMISSION_TIME = 0.1
 @onready var bounds := $CollisionShape2D.shape.get_rect() as Rect2
 @onready var container := $CollisionShape2D
 
+@onready var orig_pos: Vector2 = get_parent().position
+
 @export var DEBUG_STROKES: Array[PackedVector2Array] = []
 
 var orig_line_color: Color
@@ -18,6 +20,8 @@ var orig_line_color: Color
 var lines: Array[Line2D] = []
 var is_drawing := false
 var emission_time_left := 0.0
+
+var frames_to_shake := 0
 
 var world_bounds: Rect2
 
@@ -73,6 +77,7 @@ func _process(delta):
 			line.add_point(mouse_local)
 			$CPUParticles2D.position = mouse_local
 			emission_time_left = EMISSION_TIME
+			frames_to_shake = 2
 		else:
 			line.set_point_position(line.get_point_count() - 1, mouse_local)
 	
@@ -85,6 +90,15 @@ func _process(delta):
 		$CPUParticles2D.emitting = false
 		$DrawAudio.playing = false
 
+	# shake
+	if frames_to_shake > 0:
+		frames_to_shake -= 1
+		var r := Vector2(randf_range(-0.3, 0.3), randf_range(-0.3, 0.3))
+		get_parent().position = orig_pos + r
+		pass
+	else:
+		get_parent().position = orig_pos
+		pass
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -107,6 +121,7 @@ func _on_input_event(viewport, event, shape_idx):
 				level.update_colors()
 				$CPUParticles2D.position = mouse_local
 				emission_time_left = EMISSION_TIME
+				frames_to_shake = 2
 
 func check_drawing():
 	DEBUG_STROKES.clear()

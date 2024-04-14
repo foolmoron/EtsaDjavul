@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_j6lgc")
+max_error = 0.09
 text = "KO"
 text_plural = "KOS"
 text_genitive = "KOEF"

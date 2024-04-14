@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_vx7la")
+max_error = 0.09
 text = "YU"
 text_plural = "YUS"
 text_genitive = "YUOF"

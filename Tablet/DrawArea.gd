@@ -1,7 +1,7 @@
 class_name DrawArea
 extends Area2D
 
-const EMISSION_TIME = 0.1
+const EMISSION_TIME = 0
 
 @export_range(0, 100) var min_dist := 30.0
 @export var line_scn: PackedScene
@@ -195,6 +195,9 @@ func check_drawing():
 			runes_to_rank.append([RuneSequenceEntry.build(r, false, true, false),  r.points_normalized_rot,       "%s ROT      " % r.resource_path])
 			runes_to_rank.append([RuneSequenceEntry.build(r, true,  true, false),  r.points_normalized_rot_vflip, "%s ROT VFLIP" % r.resource_path])
 		runes_to_rank = runes_to_rank.filter(func(r): return level.phrase.any(func(p): return p.same_except_genitive(r[0])))
+		if runes_to_rank.size() == 0:
+			ruined = true
+			continue
 		var res = Util.best_by(runes_to_rank, func(r, best): return -Rune.test_error(drawing, r[1], -best))
 		var best_rune = res[0]
 		var best_error = sqrt(-res[1])

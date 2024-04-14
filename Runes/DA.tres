@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_2snx5")
+max_error = 0.09
 text = "DA"
 text_plural = "DAS"
 text_genitive = "DAOF"

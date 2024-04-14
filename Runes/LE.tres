@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_g56ln")
+max_error = 0.09
 text = "LE"
 text_plural = "LES"
 text_genitive = "LEOF"

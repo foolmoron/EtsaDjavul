@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_hywdo")
+max_error = 0.09
 text = "BA"
 text_plural = "BAS"
 text_genitive = "BAOF"

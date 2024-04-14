@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_bysgy")
+max_error = 0.09
 text = "DE"
 text_plural = "DES"
 text_genitive = "DEOF"

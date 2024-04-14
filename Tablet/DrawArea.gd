@@ -1,7 +1,7 @@
 class_name DrawArea
 extends Area2D
 
-const EMISSION_TIME = 0
+const EMISSION_TIME = 0.1
 
 @export_range(0, 100) var min_dist := 30.0
 @export var line_scn: PackedScene

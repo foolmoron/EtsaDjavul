@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_q1cl2")
-max_error = 0.06
+max_error = 0.07
 text = "BE"
 text_plural = "BES"
 text_genitive = "BEOF"

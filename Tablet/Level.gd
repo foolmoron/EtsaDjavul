@@ -39,14 +39,14 @@ func _process(delta):
 	var is_level := GameManager.inst.current_level == level_id
 	var has_prev := level_id > 1
 	var has_next := level_id < GameManager.inst.levels.size() and ever_completed
-	$PrevButton.set_process(PROCESS_MODE_INHERIT if is_level and has_prev else PROCESS_MODE_DISABLED)
 	$PrevButton.visible = is_level and has_prev
-	$NextButton.set_process(PROCESS_MODE_INHERIT if is_level and has_next else PROCESS_MODE_DISABLED)
+	$PrevButton.set_process($PrevButton.visible )
 	$NextButton.visible = is_level and has_next
-	$LevelsButton.set_process(PROCESS_MODE_INHERIT if is_level else PROCESS_MODE_DISABLED)
+	$NextButton.set_process($NextButton.visible)
 	$LevelsButton.visible = is_level
-	$ClearButton.set_process(PROCESS_MODE_INHERIT if is_level else PROCESS_MODE_DISABLED)
+	$LevelsButton.set_process($LevelsButton.visible)
 	$ClearButton.visible = is_level
+	$ClearButton.set_process($ClearButton.visible)
 	pass
 
 func to_prev_level():
@@ -76,7 +76,11 @@ func do_complete():
 	update_colors()
 	if not GameManager.inst.save.completed.has(level_name):
 		GameManager.inst.save.completed.append(level_name)
-		GameManager.inst.do_save()
+	if level_id > GameManager.inst.save.completed_id:
+		GameManager.inst.completed_id = level_id
+		GameManager.inst.save.completed_id = level_id
+		GameManager.inst.update_completed()
+	GameManager.inst.do_save()
 
 func update_colors():
 	$Shadow.color = complete_shadow_color if ever_completed else orig_shadow_color

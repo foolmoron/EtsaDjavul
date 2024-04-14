@@ -17,14 +17,17 @@ var levels: Array[Level] = []
 const SAVE_FILE := "user://etsa.save"
 var save = {}
 var save_loaded := false
+var completed_id := 0
 
 func _enter_tree():
 	inst = self
 
 func _ready():
+	completed_id = get_save().completed_id
 	for l: Level in find_children("*", "Level", false):
 		levels.append(l)
 		l.level_id = levels.size()
+	update_completed()
 
 func _process(delta):
 	$Camera2D.global_position = lerp($Camera2D.global_position, pos_target, pos_lerp_speed)
@@ -38,8 +41,7 @@ func get_save() -> Dictionary:
 			save = {}
 		else:
 			var json := JSON.new()
-			var str := FileAccess.get_file_as_string(SAVE_FILE)
-			var res := json.parse(str)
+			var res := json.parse(FileAccess.get_file_as_string(SAVE_FILE))
 			if not res == OK:
 				save = {}
 			else:
@@ -47,6 +49,8 @@ func get_save() -> Dictionary:
 		# init
 		if not save.has("completed"):
 			save.completed = []
+		if not save.has("completed_id"):
+			save.completed_id = 0
 	return save
 
 func do_save():
@@ -62,3 +66,9 @@ func set_level(level: int):
 	else:
 		pos_target = pos_orig
 		zoom_target = zoom_orig
+
+func update_completed():
+	for l in levels:
+		var c := l.level_id <= (completed_id + 1)
+		l.set_process(c)
+		l.visible = c

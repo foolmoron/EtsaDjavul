@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://kcewggwym0jy"]
+[gd_scene load_steps=55 format=3 uid="uid://kcewggwym0jy"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_704a6"]
 [ext_resource type="PackedScene" uid="uid://dii2mwatui4bc" path="res://Tablet/level.tscn" id="1_blnp8"]
@@ -169,6 +169,111 @@ plural = false
 negative = false
 genitive = false
 
+[sub_resource type="Resource" id="Resource_axyjn"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("3_lxc4q")
+plural = true
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_hwykb"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("9_2cx8c")
+plural = true
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_6tu6j"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("13_fybsg")
+plural = true
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_a6sdi"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("12_tw2bj")
+plural = true
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_cioyg"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("10_ilyat")
+plural = false
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_noyx5"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("11_1kb0u")
+plural = true
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_4me1c"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("3_lxc4q")
+plural = false
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_5gqfx"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("9_2cx8c")
+plural = false
+negative = false
+genitive = true
+
+[sub_resource type="Resource" id="Resource_hwxrf"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("10_ilyat")
+plural = false
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_manl7"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("8_kjdg5")
+plural = false
+negative = false
+genitive = true
+
+[sub_resource type="Resource" id="Resource_7ej58"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("9_2cx8c")
+plural = false
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_bmlwj"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("12_tw2bj")
+plural = false
+negative = false
+genitive = true
+
+[sub_resource type="Resource" id="Resource_54wn8"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("3_lxc4q")
+plural = true
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_2qwpd"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("3_lxc4q")
+plural = false
+negative = true
+genitive = false
+
+[sub_resource type="Resource" id="Resource_kr8sn"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("10_ilyat")
+plural = false
+negative = true
+genitive = false
+
 [sub_resource type="LabelSettings" id="LabelSettings_dtert"]
 resource_local_to_scene = true
 line_spacing = 2.08165e-12
@@ -301,46 +406,55 @@ phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_a6ax4"), SubResour
 position = Vector2(-9.15527e-05, 456)
 scale = Vector2(0.143, 0.143)
 level_name = "XV"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_axyjn")])
 
 [node name="Level16" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(84.9999, 456)
 scale = Vector2(0.143, 0.143)
 level_name = "XVI"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_hwykb")])
 
 [node name="Level17" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(170, 456)
 scale = Vector2(0.143, 0.143)
 level_name = "XVII"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_6tu6j"), SubResource("Resource_a6sdi")])
 
 [node name="Level18" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(255, 456)
 scale = Vector2(0.143, 0.143)
 level_name = "XVIII"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_cioyg"), SubResource("Resource_noyx5")])
 
 [node name="Level19" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(340, 456)
 scale = Vector2(0.143, 0.143)
 level_name = "XIX"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_4me1c"), SubResource("Resource_5gqfx")])
 
 [node name="Level20" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(425, 456)
 scale = Vector2(0.143, 0.143)
 level_name = "XX"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_hwxrf"), SubResource("Resource_manl7")])
 
 [node name="Level21" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(510, 456)
 scale = Vector2(0.143, 0.143)
 level_name = "XXI"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_7ej58"), SubResource("Resource_bmlwj"), SubResource("Resource_54wn8")])
 
 [node name="Level22" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(-9.15527e-05, 342)
 scale = Vector2(0.143, 0.143)
 level_name = "XXII"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_2qwpd")])
 
 [node name="Level23" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(84.9999, 342)
 scale = Vector2(0.143, 0.143)
 level_name = "XXIII"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_kr8sn")])
 
 [node name="Level24" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(170, 342)

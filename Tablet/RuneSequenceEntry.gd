@@ -14,6 +14,10 @@ static func build(_rune: Rune, _plural: bool, _negative: bool, _genitive: bool) 
 	entry.genitive = _genitive
 	return entry
 
+func same_except_genitive(other: RuneSequenceEntry) -> bool:
+	var x = rune == other.rune and plural == other.plural and negative == other.negative
+	return x
+
 func get_text(first: bool) -> String:
 	var text: String
 	if plural:

@@ -38,6 +38,14 @@ func _ready():
 			phrase.remove_at(i)
 			phrase.insert(i - 1, item)
 
+	# random polygon
+	for i in $Shadow.polygon.size():
+		var r = Vector2(randf_range(-8.0, 8.0), randf_range(-8.0, 8.0))
+		$Shadow.polygon[i] += r
+	for i in $Rock.polygon.size():
+		var r = Vector2(randf_range(-8.0, 8.0), randf_range(-8.0, 8.0))
+		$Rock.polygon[i] += r
+
 func _process(delta):
 	var is_level := GameManager.inst.current_level == level_id
 	var has_prev := level_id > 1

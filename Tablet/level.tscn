@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dii2mwatui4bc"]
+[gd_scene load_steps=15 format=3 uid="uid://dii2mwatui4bc"]
 
 [ext_resource type="Script" path="res://Tablet/Level.gd" id="1_71apm"]
 [ext_resource type="Script" path="res://Tablet/DrawArea.gd" id="2_e4nei"]
@@ -30,6 +30,20 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_a7wen"]
 colors = PackedColorArray(0.286157, 0.286157, 0.286157, 1, 0.493211, 0.493211, 0.493211, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkylh"]
+bg_color = Color(0.780392, 0.780392, 0.780392, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.32549, 0.32549, 0.32549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqwdj"]
+bg_color = Color(0.517647, 0.517647, 0.517647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omg0m"]
+bg_color = Color(0.266667, 0.266667, 0.266667, 1)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_71apm")
@@ -108,7 +122,12 @@ offset_top = 16.0
 offset_right = 80.0
 offset_bottom = 80.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.27451, 0.27451, 0.27451, 1)
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_vkylh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qqwdj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_omg0m")
 text = "<"
 
 [node name="NextButton" type="Button" parent="."]
@@ -117,7 +136,12 @@ offset_top = 16.0
 offset_right = 584.0
 offset_bottom = 80.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.27451, 0.27451, 0.27451, 1)
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_vkylh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qqwdj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_omg0m")
 text = ">"
 
 [node name="LevelsButton" type="Button" parent="."]
@@ -126,7 +150,12 @@ offset_top = 16.0
 offset_right = 453.0
 offset_bottom = 80.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.27451, 0.27451, 0.27451, 1)
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_vkylh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qqwdj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_omg0m")
 text = "LEVELS"
 
 [node name="ClearButton" type="Button" parent="."]
@@ -135,7 +164,12 @@ offset_top = 16.0
 offset_right = 298.0
 offset_bottom = 80.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.27451, 0.27451, 0.27451, 1)
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_vkylh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qqwdj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_omg0m")
 text = "CLEAR"
 
 [connection signal="input_event" from="DrawArea" to="DrawArea" method="_on_input_event"]

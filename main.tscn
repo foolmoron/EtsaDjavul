@@ -1,6 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://kcewggwym0jy"]
+[gd_scene load_steps=13 format=3 uid="uid://kcewggwym0jy"]
 
-[ext_resource type="PackedScene" uid="uid://ciw41opvp44d5" path="res://Tablet/tablet.tscn" id="1_4ysgs"]
+[ext_resource type="Script" path="res://GameManager.gd" id="1_704a6"]
+[ext_resource type="PackedScene" uid="uid://dii2mwatui4bc" path="res://Tablet/level.tscn" id="1_blnp8"]
+[ext_resource type="Script" path="res://Runes/RuneManager.gd" id="2_kanbu"]
+[ext_resource type="Resource" uid="uid://dvsa3hmuosogw" path="res://Runes/KA.tres" id="3_lxc4q"]
+[ext_resource type="Resource" uid="uid://chwu1ykkfyxyv" path="res://Runes/KE.tres" id="4_qxw0r"]
+[ext_resource type="Resource" uid="uid://pus65xylqxp1" path="res://Runes/BA.tres" id="5_hdu62"]
+[ext_resource type="Script" path="res://Tablet/RuneSequenceEntry.gd" id="7_ef4bo"]
 
 [sub_resource type="Gradient" id="Gradient_25lx6"]
 interpolation_mode = 2
@@ -15,7 +21,29 @@ height = 800
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="Resource" id="Resource_1t3d6"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("3_lxc4q")
+plural = false
+
+[sub_resource type="Resource" id="Resource_jkp1n"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("3_lxc4q")
+plural = true
+
+[sub_resource type="Resource" id="Resource_xrqcr"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("4_qxw0r")
+plural = false
+
 [node name="Main" type="Node2D"]
+script = ExtResource("1_704a6")
+pos_lerp_speed = 0.15
+zoom_lerp_speed = 15.0
+
+[node name="RuneManager" type="Node" parent="."]
+script = ExtResource("2_kanbu")
+all_runes = Array[Resource("res://Runes/Rune.gd")]([ExtResource("3_lxc4q"), ExtResource("4_qxw0r"), ExtResource("5_hdu62")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
@@ -25,26 +53,60 @@ limit_top = 0
 limit_right = 600
 limit_bottom = 800
 limit_smoothed = true
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(300, 400)
 texture = SubResource("GradientTexture2D_snoj0")
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
-[node name="Tablet" parent="." instance=ExtResource("1_4ysgs")]
-position = Vector2(5, 563)
-scale = Vector2(0.296211, 0.296211)
+[node name="Level1" parent="." instance=ExtResource("1_blnp8")]
+position = Vector2(7.62939e-06, 640)
+scale = Vector2(0.2, 0.2)
+level_name = "I"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_1t3d6")])
 
-[node name="Tablet2" parent="." instance=ExtResource("1_4ysgs")]
-position = Vector2(207, 564)
-scale = Vector2(0.296211, 0.296211)
+[node name="Level2" parent="." instance=ExtResource("1_blnp8")]
+position = Vector2(120, 640)
+scale = Vector2(0.2, 0.2)
+level_name = "II"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_jkp1n"), SubResource("Resource_xrqcr")])
 
-[node name="Tablet3" parent="." instance=ExtResource("1_4ysgs")]
-position = Vector2(403, 563)
-scale = Vector2(0.296211, 0.296211)
+[node name="Level3" parent="." instance=ExtResource("1_blnp8")]
+position = Vector2(240, 640)
+scale = Vector2(0.2, 0.2)
+level_name = "III"
 
-[node name="Tablet4" parent="." instance=ExtResource("1_4ysgs")]
-position = Vector2(206, 188)
-scale = Vector2(0.296211, 0.296211)
+[node name="Level4" parent="." instance=ExtResource("1_blnp8")]
+position = Vector2(360, 640)
+scale = Vector2(0.2, 0.2)
+level_name = "IV"
+
+[node name="Level5" parent="." instance=ExtResource("1_blnp8")]
+position = Vector2(483, 640)
+scale = Vector2(0.2, 0.2)
+level_name = "V"
+
+[node name="Level6" parent="." instance=ExtResource("1_blnp8")]
+position = Vector2(4.54747e-13, 480)
+scale = Vector2(0.2, 0.2)
+level_name = "VI"
+
+[node name="Level7" parent="." instance=ExtResource("1_blnp8")]
+position = Vector2(120, 480)
+scale = Vector2(0.2, 0.2)
+level_name = "VII"
+
+[node name="Level8" parent="." instance=ExtResource("1_blnp8")]
+position = Vector2(240, 480)
+scale = Vector2(0.2, 0.2)
+level_name = "VIII"
+
+[node name="Level9" parent="." instance=ExtResource("1_blnp8")]
+position = Vector2(360, 480)
+scale = Vector2(0.2, 0.2)
+level_name = "IX"
+
+[node name="Level10" parent="." instance=ExtResource("1_blnp8")]
+position = Vector2(483, 480)
+scale = Vector2(0.2, 0.2)
+level_name = "X"

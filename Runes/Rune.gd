@@ -1,6 +1,8 @@
 class_name Rune
 extends Resource
 
+@export var text = ""
+@export var text_plural = ""
 @export var strokes: Array[PackedVector2Array] = []
 
 const MIN_DIST := 0.01

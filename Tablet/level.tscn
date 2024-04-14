@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://dii2mwatui4bc"]
+
+[ext_resource type="Script" path="res://Tablet/Level.gd" id="1_71apm"]
+[ext_resource type="Script" path="res://Tablet/DrawArea.gd" id="2_e4nei"]
+[ext_resource type="FontFile" uid="uid://cmfhcqnjxi2dk" path="res://Art/SpectralSC-BoldItalic.ttf" id="2_li5js"]
+[ext_resource type="PackedScene" uid="uid://bhi7bucq4cdmf" path="res://Tablet/drawing_line.tscn" id="3_g50de"]
+[ext_resource type="FontFile" uid="uid://dwidlnm4oscog" path="res://Art/SpectralSC-SemiBold.ttf" id="3_itavd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5htio"]
+line_spacing = 2.08165e-12
+font = ExtResource("2_li5js")
+font_size = 56
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k7wfb"]
+line_spacing = 2.08165e-12
+font = ExtResource("3_itavd")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yap3f"]
+size = Vector2(441.111, 612.222)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_71apm")
+
+[node name="Shadow" type="Polygon2D" parent="."]
+position = Vector2(293.137, 394.698)
+scale = Vector2(0.992834, 0.938725)
+color = Color(0.545098, 0.545098, 0.545098, 1)
+polygon = PackedVector2Array(-235, -256, -191, -281, -147, -291, -112, -298, -64, -306, -14, -307, 21, -315, 76, -309, 119, -301, 159, -308, 190, -306, 226, -288, 247, -262, 259, -224, 256, -164, 255, -114, 240, -60, 250, -17, 252, 21, 245, 61, 247, 98, 250, 150, 258, 185, 244, 220, 255, 263, 241, 316, 249, 380, 251, 429, -234, 431, -234, 382, -244, 356, -236, 293, -253, 262, -237, 212, -242, 165, -260, 132, -240, 81, -254, 51, -248, 1, -256, -33, -247, -71, -237, -113, -257, -164, -240, -191)
+
+[node name="Rock" type="Polygon2D" parent="."]
+position = Vector2(301.258, 409.63)
+scale = Vector2(0.9, 0.9)
+color = Color(0.752941, 0.752941, 0.752941, 1)
+polygon = PackedVector2Array(-235, -256, -191, -281, -147, -291, -112, -298, -64, -306, -14, -307, 21, -315, 76, -309, 119, -301, 159, -308, 190, -306, 226, -288, 247, -262, 259, -224, 256, -164, 255, -114, 240, -60, 250, -17, 252, 21, 245, 61, 247, 98, 250, 150, 258, 185, 244, 220, 255, 263, 241, 316, 249, 380, 251, 429, -234, 431, -234, 382, -244, 356, -236, 293, -253, 262, -237, 212, -242, 165, -260, 132, -240, 81, -254, 51, -248, 1, -256, -33, -247, -71, -237, -113, -257, -164, -240, -191)
+
+[node name="LevelLabel" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 133.0
+offset_right = 600.0
+offset_bottom = 219.0
+text = "~XXXIII~"
+label_settings = SubResource("LabelSettings_5htio")
+horizontal_alignment = 1
+
+[node name="PhraseLabel" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 194.0
+offset_right = 600.0
+offset_bottom = 254.0
+text = "KATAHPODESBEETAH"
+label_settings = SubResource("LabelSettings_k7wfb")
+horizontal_alignment = 1
+
+[node name="DrawArea" type="Area2D" parent="."]
+position = Vector2(299.137, 526)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("2_e4nei")
+min_dist = 16.0
+line_scn = ExtResource("3_g50de")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DrawArea"]
+position = Vector2(5, -12.7778)
+shape = SubResource("RectangleShape2D_yap3f")
+
+[node name="CameraTarget" type="Node2D" parent="."]
+position = Vector2(300, 400)
+
+[node name="PrevButton" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "<"
+
+[node name="NextButton" type="Button" parent="."]
+offset_left = 520.0
+offset_top = 16.0
+offset_right = 584.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = ">"
+
+[node name="LevelsButton" type="Button" parent="."]
+offset_left = 321.0
+offset_top = 16.0
+offset_right = 453.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "LEVELS"
+
+[node name="ClearButton" type="Button" parent="."]
+offset_left = 178.0
+offset_top = 16.0
+offset_right = 298.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "CLEAR"
+
+[connection signal="input_event" from="DrawArea" to="DrawArea" method="_on_input_event"]
+[connection signal="button_down" from="PrevButton" to="." method="to_prev_level"]
+[connection signal="button_down" from="NextButton" to="." method="to_next_level"]
+[connection signal="button_down" from="LevelsButton" to="." method="to_levels"]
+[connection signal="button_down" from="ClearButton" to="DrawArea" method="clear_drawing"]

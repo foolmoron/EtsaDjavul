@@ -11,14 +11,14 @@
 resource_local_to_scene = true
 line_spacing = 2.08165e-12
 font = ExtResource("2_li5js")
-font_size = 56
+font_size = 236
 font_color = Color(0.254902, 0.254902, 0.254902, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_k7wfb"]
 resource_local_to_scene = true
 line_spacing = 2.08165e-12
 font = ExtResource("3_itavd")
-font_size = 36
+font_size = 150
 font_color = Color(0.254902, 0.254902, 0.254902, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yap3f"]
@@ -44,19 +44,22 @@ antialiased = true
 polygon = PackedVector2Array(-235, -256, -191, -281, -147, -291, -112, -298, -64, -306, -14, -307, 21, -315, 76, -309, 119, -301, 159, -308, 190, -306, 226, -288, 247, -262, 259, -224, 256, -164, 255, -114, 240, -60, 250, -17, 252, 21, 245, 61, 247, 98, 250, 150, 258, 185, 244, 220, 255, 263, 241, 316, 249, 380, 251, 429, -234, 431, -234, 382, -244, 356, -236, 293, -253, 262, -237, 212, -242, 165, -260, 132, -240, 81, -254, 51, -248, 1, -256, -33, -247, -71, -237, -113, -257, -164, -240, -191)
 
 [node name="LevelLabel" type="Label" parent="."]
-offset_left = 16.0
-offset_top = 133.0
-offset_right = 600.0
-offset_bottom = 219.0
+offset_left = 17.0
+offset_top = 128.0
+offset_right = 2345.0
+offset_bottom = 488.0
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
 text = "~XXXIII~"
 label_settings = SubResource("LabelSettings_5htio")
 horizontal_alignment = 1
 
 [node name="PhraseLabel" type="Label" parent="."]
-offset_left = 16.0
-offset_top = 194.0
-offset_right = 600.0
-offset_bottom = 254.0
+offset_left = 19.0
+offset_top = 189.0
+offset_right = 2339.0
+offset_bottom = 418.0
+scale = Vector2(0.25, 0.25)
 text = "KATAHPODESBEETAH"
 label_settings = SubResource("LabelSettings_k7wfb")
 horizontal_alignment = 1

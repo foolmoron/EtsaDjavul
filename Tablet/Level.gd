@@ -16,9 +16,10 @@ var level_id := 0
 
 func _ready():
 	ever_completed = GameManager.inst.get_save().completed.has(level_name)
+	complete = ever_completed
 	update_colors()
 
-	$LevelLabel.text = level_name
+	$LevelLabel.text = "~%s~" % level_name
 	
 	var text = ""
 	if phrase != null and phrase.size() > 0:

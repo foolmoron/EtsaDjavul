@@ -61,7 +61,7 @@ func set_level(level: int):
 	current_level = level
 	if level > 0:
 		pos_target = levels[level-1].get_node("CameraTarget").global_position
-		var zoom := 1.0 / levels[level-1].scale.x
+		var zoom := zoom_orig.x / levels[level-1].scale.x
 		zoom_target = Vector2(zoom, zoom)
 	else:
 		pos_target = pos_orig

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://kcewggwym0jy"]
+[gd_scene load_steps=14 format=3 uid="uid://kcewggwym0jy"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_704a6"]
 [ext_resource type="PackedScene" uid="uid://dii2mwatui4bc" path="res://Tablet/level.tscn" id="1_blnp8"]
@@ -24,17 +24,30 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="Resource" id="Resource_1t3d6"]
 script = ExtResource("7_ef4bo")
 rune = ExtResource("3_lxc4q")
-plural = false
+plural = true
+negative = true
+genitive = true
 
 [sub_resource type="Resource" id="Resource_jkp1n"]
 script = ExtResource("7_ef4bo")
 rune = ExtResource("3_lxc4q")
 plural = true
+negative = false
+genitive = false
 
 [sub_resource type="Resource" id="Resource_xrqcr"]
 script = ExtResource("7_ef4bo")
 rune = ExtResource("4_qxw0r")
 plural = false
+negative = true
+genitive = true
+
+[sub_resource type="Resource" id="Resource_8fg0p"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("5_hdu62")
+plural = true
+negative = false
+genitive = true
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_704a6")
@@ -43,7 +56,7 @@ zoom_lerp_speed = 15.0
 
 [node name="RuneManager" type="Node" parent="."]
 script = ExtResource("2_kanbu")
-all_runes = Array[Resource("res://Runes/Rune.gd")]([ExtResource("3_lxc4q"), ExtResource("4_qxw0r"), ExtResource("5_hdu62")])
+all_runes = Array[Resource("res://Runes/Rune.gd")]([ExtResource("3_lxc4q"), ExtResource("4_qxw0r"), ExtResource("5_hdu62"), ExtResource("5_hdu62"), ExtResource("5_hdu62"), ExtResource("5_hdu62")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
@@ -69,7 +82,7 @@ phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_1t3d6")])
 position = Vector2(120, 640)
 scale = Vector2(0.2, 0.2)
 level_name = "II"
-phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_jkp1n"), SubResource("Resource_xrqcr")])
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_jkp1n"), SubResource("Resource_xrqcr"), SubResource("Resource_8fg0p")])
 
 [node name="Level3" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(240, 640)

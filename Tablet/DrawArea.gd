@@ -61,18 +61,80 @@ func _on_input_event(viewport, event, shape_idx):
 				is_drawing = true
 
 func check_drawing():
-	var drawing_lines: Array[PackedVector2Array] = []
-	for line in lines:
-		drawing_lines.append(line.points)
-	var drawing := Drawing.new(drawing_lines)
-	var runes_to_rank = []
-	for r in RuneManager.inst.all_runes:
-		runes_to_rank.append([r, r.points_normalized, "%s      " % r.resource_path])
-		runes_to_rank.append([r, r.points_normalized_vflip, "%s VFLIP" % r.resource_path])
-	var runes_ranked = Util.sorted_by(runes_to_rank, func(r): return -Rune.test_error(drawing, r[1]))
-	print("Ranking %s:" % level.name)
-	for r in runes_ranked:
-		print("\t%s: %.3f" % [r[2], Rune.test_error(drawing, r[1])])
+	var aa := Time.get_ticks_usec()
+	const TOUCH_LEEWAY = 12.0
+	var touchings = {}
+	for l1 in lines.size():
+		if not touchings.has(l1):
+			touchings[l1] = {}
+		var line1 := lines[l1]
+		var rect1 = Rect2(line1.points[0], Vector2(0, 0))
+		for p in line1.points:
+			rect1 = rect1.expand(p)
+		rect1 = rect1.grow(TOUCH_LEEWAY)
+		for l2 in lines.size():
+			var line2 := lines[l2]
+			var rect2 = Rect2(line2.points[0], Vector2(0, 0))
+			for p in line2.points:
+				rect2 = rect2.expand(p)
+			rect2 = rect2.grow(TOUCH_LEEWAY)
+			if rect1.intersects(rect2, true):
+				rect1 = rect1.merge(rect2)
+				touchings[l1][l2] = null
+				if not touchings.has(l2):
+					touchings[l2] = {}
+				touchings[l2][l1] = null
+				var to_merge = touchings[l1].keys()
+				for k in touchings[l2].keys():
+					if not to_merge.has(k):
+						to_merge.append(k)
+				var i := 0
+				while i < to_merge.size():
+					for k in touchings[to_merge[i]].keys():
+						if not to_merge.has(k):
+							to_merge.append(k)
+					i += 1
+				for m in to_merge:
+					touchings[l1].merge(touchings[m])
+					touchings[m].merge(touchings[l1])
+	var drawings: Array[Drawing] = []
+	for key in touchings.keys():
+		touchings[key] = touchings[key].keys()
+		touchings[key].sort()
+	while !touchings.is_empty():
+		var keys = touchings.keys()
+		var key = keys[0]
+		var val = touchings[key]
+		var drawing_lines: Array[PackedVector2Array] = []
+		var k := keys.size() - 1
+		while k >= 0:
+			if touchings[keys[k]] == val:
+				drawing_lines.append(lines[keys[k]].points)
+				touchings.erase(keys[k])
+			k -= 1
+		var drawing = Drawing.new(drawing_lines)
+		drawings.append(drawing)
+	drawings.sort_custom(func(a, b): return a.get_sort_value() > b.get_sort_value())
+
+	var bb := Time.get_ticks_usec()
+	print("Best for %s:" % level.name)
+	for drawing in drawings:
+		var runes_to_rank = []
+		for r in RuneManager.inst.all_runes:
+			runes_to_rank.append([r, r.points_normalized, "%s          " % r.resource_path])
+			runes_to_rank.append([r, r.points_normalized_vflip, "%s VFLIP    " % r.resource_path])
+			runes_to_rank.append([r, r.points_normalized_rot, "%s ROT      " % r.resource_path])
+			runes_to_rank.append([r, r.points_normalized_rot_vflip, "%s ROT VFLIP" % r.resource_path])
+		var res = Util.best_by(runes_to_rank, func(r, best): return -Rune.test_error(drawing, r[1], -best))
+		var best_rune = res[0]
+		var best_error = res[1]
+		print("\t%s: %.3f" % [best_rune[2], sqrt(-best_error)])
+
+	var cc := Time.get_ticks_usec()
+	print("\t\t elapsed a: %sus" % (bb - aa))
+	print("\t\t elapsed b: %sus" % (cc - bb))
+	print("\t\t elapsed c: %sus" % (Time.get_ticks_usec() - cc))
+	queue_redraw()
 
 func clear_drawing():
 	for l in lines:

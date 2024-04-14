@@ -22,4 +22,4 @@ func _init(lines: Array[PackedVector2Array]):
     pass
 
 func get_sort_value() -> float:
-    return -rect.get_center().dot(Vector2(1, 0.75)) # top-leftmost wins, with higher weight to horizontal
+    return -rect.get_center().dot(Vector2(0.5, 1)) # top-leftmost wins, with higher weight to horizontal

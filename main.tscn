@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://kcewggwym0jy"]
+[gd_scene load_steps=76 format=3 uid="uid://kcewggwym0jy"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_704a6"]
 [ext_resource type="PackedScene" uid="uid://dii2mwatui4bc" path="res://Tablet/level.tscn" id="1_blnp8"]
@@ -11,10 +11,15 @@
 [ext_resource type="Resource" uid="uid://c0ld52db7tg8s" path="res://Runes/BE.tres" id="9_2cx8c"]
 [ext_resource type="Resource" uid="uid://d2rslog6usrmy" path="res://Runes/BO.tres" id="10_ilyat"]
 [ext_resource type="Resource" uid="uid://xheim5x0eane" path="res://Runes/LE.tres" id="11_1kb0u"]
+[ext_resource type="Resource" uid="uid://clu6kq4y7fxnk" path="res://Runes/YE.tres" id="12_jlqwq"]
 [ext_resource type="Resource" uid="uid://c5qs53hobo4x2" path="res://Runes/LO.tres" id="12_tw2bj"]
+[ext_resource type="Resource" uid="uid://bds5pchlfugdc" path="res://Runes/YO.tres" id="13_ewoy6"]
 [ext_resource type="Resource" uid="uid://bgoix1duyudkd" path="res://Runes/LU.tres" id="13_fybsg"]
+[ext_resource type="Resource" uid="uid://bkoso0g0df2ot" path="res://Runes/YU.tres" id="14_hdgg0"]
 [ext_resource type="FontFile" uid="uid://cmfhcqnjxi2dk" path="res://Art/SpectralSC-BoldItalic.ttf" id="14_x3nvs"]
+[ext_resource type="Resource" uid="uid://c3p4uf4e3g6pv" path="res://Runes/DA.tres" id="15_2xc1e"]
 [ext_resource type="FontFile" uid="uid://dwidlnm4oscog" path="res://Art/SpectralSC-SemiBold.ttf" id="15_riale"]
+[ext_resource type="Resource" uid="uid://ckc48fby8h68t" path="res://Runes/DE.tres" id="16_366ge"]
 
 [sub_resource type="Gradient" id="Gradient_25lx6"]
 interpolation_mode = 2
@@ -274,6 +279,118 @@ plural = false
 negative = true
 genitive = false
 
+[sub_resource type="Resource" id="Resource_qiudu"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("12_jlqwq")
+plural = false
+negative = true
+genitive = false
+
+[sub_resource type="Resource" id="Resource_f1oss"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("13_ewoy6")
+plural = false
+negative = true
+genitive = false
+
+[sub_resource type="Resource" id="Resource_mwr3x"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("14_hdgg0")
+plural = false
+negative = true
+genitive = false
+
+[sub_resource type="Resource" id="Resource_ngk2a"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("14_hdgg0")
+plural = false
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_umbsy"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("12_jlqwq")
+plural = false
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_ttsal"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("13_ewoy6")
+plural = true
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_mqigs"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("16_366ge")
+plural = false
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_pqc0m"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("16_366ge")
+plural = false
+negative = true
+genitive = false
+
+[sub_resource type="Resource" id="Resource_bu3sg"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("15_2xc1e")
+plural = false
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_ys8xy"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("4_qxw0r")
+plural = false
+negative = false
+genitive = true
+
+[sub_resource type="Resource" id="Resource_12twh"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("13_ewoy6")
+plural = false
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_qiwf6"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("15_2xc1e")
+plural = false
+negative = true
+genitive = true
+
+[sub_resource type="Resource" id="Resource_xdqc1"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("13_fybsg")
+plural = false
+negative = true
+genitive = false
+
+[sub_resource type="Resource" id="Resource_6rm1m"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("15_2xc1e")
+plural = false
+negative = true
+genitive = false
+
+[sub_resource type="Resource" id="Resource_ox0nj"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("16_366ge")
+plural = true
+negative = false
+genitive = false
+
+[sub_resource type="Resource" id="Resource_modlm"]
+script = ExtResource("7_ef4bo")
+rune = ExtResource("8_kjdg5")
+plural = true
+negative = true
+genitive = true
+
 [sub_resource type="LabelSettings" id="LabelSettings_dtert"]
 resource_local_to_scene = true
 line_spacing = 2.08165e-12
@@ -295,7 +412,7 @@ zoom_lerp_speed = 65.0
 
 [node name="RuneManager" type="Node" parent="."]
 script = ExtResource("2_kanbu")
-all_runes = Array[Resource("res://Runes/Rune.gd")]([ExtResource("3_lxc4q"), ExtResource("4_qxw0r"), ExtResource("8_kjdg5"), ExtResource("5_hdu62"), ExtResource("9_2cx8c"), ExtResource("10_ilyat"), ExtResource("11_1kb0u"), ExtResource("12_tw2bj"), ExtResource("13_fybsg")])
+all_runes = Array[Resource("res://Runes/Rune.gd")]([ExtResource("3_lxc4q"), ExtResource("4_qxw0r"), ExtResource("8_kjdg5"), ExtResource("5_hdu62"), ExtResource("9_2cx8c"), ExtResource("10_ilyat"), ExtResource("11_1kb0u"), ExtResource("12_tw2bj"), ExtResource("13_fybsg"), ExtResource("12_jlqwq"), ExtResource("13_ewoy6"), ExtResource("14_hdgg0"), ExtResource("15_2xc1e"), ExtResource("16_366ge")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
@@ -407,12 +524,14 @@ position = Vector2(-9.15527e-05, 456)
 scale = Vector2(0.143, 0.143)
 level_name = "XV"
 phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_axyjn")])
+hint = [PackedVector2Array(-22.6553, -198.566, -22.6553, -187.67, -22.6553, -180.406, -22.6553, -164.063, -22.6553, -152.26, -22.6553, -136.825, -22.6553, -119.574, -22.6553, -104.138, -22.6553, -96.8745, -22.6553, -77.8076, -22.6553, -63.28, -22.6553, -46.9373, -21.747, -31.502, -19.9305, -11.5269, -19.9305, -2.44727, -19.9305, 8.44824, -19.9305, 19.3438, -19.9305, 32.0552, -19.9305, 44.7666, -19.9305, 59.2939, -19.9305, 72.0049, -19.9305, 83.8086, -19.9305, 95.6118, -19.9305, 114.679, -19.9305, 120.127, -19.9305, 139.194, -19.9305, 153.721, -18.114, 166.433, -17.2057, 177.328, -17.2057, 192.763, -17.2057, 207.291, -17.2057, 221.818, -17.2057, 236.345, -5.39828, 233.622, 8.22568, 227.266, 21.8497, 219.094, 32.7489, 213.646, 43.6481, 209.106, 55.4554, 204.566, 69.9877, 198.211, 84.52, 193.671, 98.144, 185.5, 109.951, 178.236, 122.667, 169.156, 135.383, 160.077, 145.374, 149.182, 154.456, 136.47, 146.282, 123.759, 133.566, 123.759, 119.034, 123.759, 110.86, 123.759, 101.777, 123.759, 90.8778, 123.759, 77.2538, 123.759, 59.0885, 123.759, 48.1893, 123.759, 42.7398, 123.759, 27.2993, 122.851, 12.767, 121.943, 0.0513306, 121.943, -8.12314, 121.035, -20.8388, 121.035, -29.0132, 120.127)]
 
 [node name="Level16" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(84.9999, 456)
 scale = Vector2(0.143, 0.143)
 level_name = "XVI"
 phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_hwykb")])
+hint = [PackedVector2Array(8.22473, -191.302, 8.22473, -177.683, 5.49994, -149.536, 4.59161, -127.745, 4.59161, -104.138, 4.59161, -79.6235, 5.49994, -54.2007, 8.22473, -29.686, 10.0413, -5.1709, 10.0413, 18.436, 10.9496, 42.9507, 10.9496, 67.4658, 10.9496, 90.1646, 10.9496, 109.231, 10.0413, 136.47, 9.133, 145.55, 7.31641, 164.617, 5.49994, 174.604, 4.59161, 184.592, 4.59161, 192.763, 4.59161, 208.199, 2.77502, 218.187), PackedVector2Array(62.7206, 116.495, 51.8215, 123.759, 31.8397, 134.654, 15.4908, 145.55, -1.76617, 158.261, -1.76617, 158.261, -33.5554, 182.776, -44.4547, 191.855, -57.1703, 200.935, -63.5282, 203.659), PackedVector2Array(53.638, 60.2017, 43.6472, 68.3735, 33.6562, 77.4531, 20.9405, 86.5327, 7.31641, 96.52, -8.12408, 105.6, -23.5646, 116.495, -42.6381, 130.115, -48.996, 132.838, -61.7117, 139.194, -68.0695, 142.826)]
 
 [node name="Level17" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(170, 456)
@@ -449,6 +568,7 @@ position = Vector2(-9.15527e-05, 342)
 scale = Vector2(0.143, 0.143)
 level_name = "XXII"
 phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_2qwpd")])
+hint = [PackedVector2Array(-164.344, -74.1719, -155.262, -72.3557, -147.996, -71.448, -133.464, -70.5398, -128.014, -70.5398, -109.849, -70.5398, -97.1331, -70.5398, -86.2339, -70.5398, -75.3347, -70.5398, -60.8025, -70.5398, -48.0868, -70.5398, -32.6462, -71.448, -19.9305, -73.2639, -12.6644, -75.0798, -3.58176, -75.9878, 10.9505, -76.8958, 19.1249, -77.8037, 33.6571, -80.5273, 47.2811, -82.3433, 58.1803, -82.3433, 73.6208, -82.3433, 86.3365, -83.2515, 98.144, -83.2515, 109.043, -83.2515, 120.851, -83.2515, 135.383, -83.2515, 150.823, -83.2515, 166.264, -83.2515, 181.704, -83.2515, 189.879, -70.5398, 186.246, -60.5522, 180.796, -46.0254, 175.346, -36.0376, 168.989, -23.3264, 162.631, -11.5229, 157.181, 1.18848, 149.007, 13.8999, 140.832, 26.6113, 133.566, 37.5068, 127.208, 45.6782, 115.401, 37.5068, 113.584, 25.7034, 110.86, 13.8999, 109.043, 2.09644, 106.318, -11.5229, 102.685, -26.958, 99.0522, -38.7615, 96.3274, -54.1968, 96.3274, -68.7241, 96.3274, -81.4353, 97.2357, -94.1467)]
 
 [node name="Level23" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(84.9999, 342)
@@ -460,56 +580,69 @@ phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_kr8sn")])
 position = Vector2(170, 342)
 scale = Vector2(0.143, 0.143)
 level_name = "XXIV"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_qiudu")])
+hint = [PackedVector2Array(-187.051, -140.453, -178.877, -138.637, -170.702, -137.729, -159.803, -136.821, -147.996, -135.913, -137.097, -135.913, -125.289, -135.913, -113.482, -135.913, -94.4081, -135.913, -81.6925, -135.913, -76.2428, -135.913, -58.9858, -135.913, -48.0867, -135.913, -33.5544, -135.913, -19.0222, -135.913, -4.48987, -135.005, 3.68445, -135.005, 12.7671, -135.005, 25.4828, -135.005, 33.6572, -135.005, 48.1895, -135.005, 63.63, -135.005, 79.0706, -135.005, 87.2449, -135.005), PackedVector2Array(89.9696, -142.269, 98.1442, -132.281, 102.685, -125.925, 108.135, -118.662, 115.401, -110.49, 123.575, -103.226, 132.658, -96.8708, 140.833, -89.6072, 150.823, -78.7117, 155.365, -72.3557, 162.631, -63.2764, 173.53, -52.3809, 183.521, -43.3013, 190.787, -35.1296, 200.778, -24.2344, 210.769, -14.2466, 220.555, -2.44336, 220.555, 2.09644), PackedVector2Array(89.9696, -144.084, 79.0706, -134.097, 59.0886, -116.846, 47.2811, -105.95, 35.4738, -95.9626, 27.2993, -86.8833, 21.8499, -79.6196, 13.6754, -71.448, 3.68445, -60.5522, -4.48987, -49.657, -17.2057, -40.5774, -29.0132, -31.4978, -40.8206, -21.5105, -53.5363, -12.4309, -59.8942, -7.89087)]
 
 [node name="Level25" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(255, 342)
 scale = Vector2(0.143, 0.143)
 level_name = "XXV"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_f1oss")])
 
 [node name="Level26" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(340, 342)
 scale = Vector2(0.143, 0.143)
 level_name = "XXVI"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_mwr3x")])
 
 [node name="Level27" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(425, 342)
 scale = Vector2(0.143, 0.143)
 level_name = "XXVII"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_ngk2a")])
 
 [node name="Level28" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(510, 342)
 scale = Vector2(0.143, 0.143)
 level_name = "XXVIII"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_umbsy"), SubResource("Resource_ttsal")])
 
 [node name="Level29" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(-9.15527e-05, 228)
 scale = Vector2(0.143, 0.143)
 level_name = "XXIX"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_mqigs")])
+hint = [PackedVector2Array(89.0608, -179.499, 89.0608, -194.026, 87.2443, -201.29, 84.5195, -210.369, 80.8864, -217.633, 75.4368, -225.805, 65.4459, -237.608, 57.2715, -244.872, 45.464, -252.135, 37.2896, -256.675, 28.207, -260.307, 20.0326, -263.031, 8.22516, -265.754, -4.49057, -264.847, -12.6649, -257.583, -21.7476, -245.78, -26.2889, -238.516, -29.0137, -230.344, -30.8302, -216.725, -28.1055, -204.014, -25.3807, -196.75, -21.7476, -185.854, -16.298, -174.959, -8.12366, -164.063, 1.86734, -152.26, 11.8582, -140.457, 19.1244, -129.561, 27.2987, -120.482, 36.3813, -111.402, 44.5558, -100.506, 58.1797, -87.7949, 66.3541, -78.7153, 72.712, -71.4521, 82.7029, -57.8325, 85.4277, -44.2134, 82.7029, -31.502, 79.0698, -22.4224, 73.6203, -14.2505, 61.8128, -6.0791, 52.7302, -1.53955, 36.3813, 3.00049, 28.207, 3.00049, 18.2161, 3.00049, 9.13345, 1.18457, 0.0508118, -1.53955, -9.03186, -5.17139, -15.3897, -9.71094, -23.5641, -20.6064, -28.1055, -30.5942, -29.922, -37.8574, -31.7385, -48.7529, -31.7385, -56.9243, -27.1972, -71.4521, -22.6558, -81.4395, -18.1145, -87.7949, -11.7567, -93.2432, -3.58231, -98.6909, 9.13345, -106.862, 19.1244, -111.402, 31.8401, -114.126, 47.2805, -115.942), PackedVector2Array(-8.12366, -14.2505, -20.8393, -6.9873, -29.922, 2.09277, -35.3716, 12.0796, -38.0964, 19.3438, -40.8211, 28.4233, -41.7294, 39.3188, -42.6377, 49.3062, -39.9129, 58.3857, -35.3716, 68.3735, -28.1055, 76.5449, -18.1145, 83.8086, -7.21539, 90.1646, 4.5921, 94.7041, 15.4913, 98.3359, 34.5648, 101.968, 46.3723, 104.691, 56.3632, 105.6, 69.0789, 102.875, 79.0698, 95.6123, 85.4277, 89.2563, 90.8773, 81.9927, 95.4186, 74.7295, 99.0516, 60.2017, 97.2352, 44.7666, 90.8773, 30.2393, 86.336, 18.4355, 78.1616, 8.44824, 67.2624, -1.53955, 54.5467, -2.44727, 46.3723, -4.26318, 30.9318, -6.9873, 15.4913, -9.71094, 1.86734, -10.6191, -10.8484, -9.71094, -16.298, -9.71094)]
 
 [node name="Level30" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(84.9999, 228)
 scale = Vector2(0.143, 0.143)
 level_name = "XXX"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_pqc0m")])
 
 [node name="Level31" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(170, 228)
 scale = Vector2(0.143, 0.143)
 level_name = "XXXI"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_bu3sg"), SubResource("Resource_ys8xy")])
 
 [node name="Level32" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(255, 228)
 scale = Vector2(0.143, 0.143)
 level_name = "XXXII"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_12twh"), SubResource("Resource_qiwf6")])
 
 [node name="Level33" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(340, 228)
 scale = Vector2(0.143, 0.143)
 level_name = "XXXIII"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_xdqc1"), SubResource("Resource_6rm1m")])
 
 [node name="Level34" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(425, 228)
 scale = Vector2(0.143, 0.143)
 level_name = "XXXIV"
+phrase = Array[ExtResource("7_ef4bo")]([SubResource("Resource_ox0nj"), SubResource("Resource_modlm")])
 
 [node name="Level35" parent="." instance=ExtResource("1_blnp8")]
 position = Vector2(510, 228)

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_k1psn")
-max_error = 0.09
+max_error = 0.07
 text = "KA"
 text_plural = "KAS"
 text_genitive = "KAOF"

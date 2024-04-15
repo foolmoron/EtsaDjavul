@@ -58,6 +58,8 @@ func _process(delta):
 	$LevelsButton.set_process($LevelsButton.visible)
 	$ClearButton.visible = is_level
 	$ClearButton.set_process($ClearButton.visible)
+	$MatchContainer.visible = is_level
+	$MatchContainer.set_process($MatchContainer.visible)
 	pass
 
 func to_prev_level():
@@ -69,22 +71,28 @@ func to_next_level():
 func to_levels():
 	GameManager.inst.set_level(0)
 
-func matches_phrase(to_match: Array[RuneSequenceEntry]) -> bool:
-	if to_match.size() != phrase.size():
-		return false
-	for i in to_match.size():
-		if phrase[i].rune != to_match[i].rune:
-			return false
-		if phrase[i].plural != to_match[i].plural:
-			return false
-		if phrase[i].negative != to_match[i].negative:
-			return false
-	return true
+func matches_phrase(to_match: Array[RuneSequenceEntry]) -> Array[bool]:
+	var matches: Array[bool] = []
+	for i in max(phrase.size(), to_match.size()):
+		if i >= phrase.size() or i >= to_match.size():
+			matches.append(false)
+		elif phrase[i].rune != to_match[i].rune:
+			matches.append(false)
+		elif phrase[i].plural != to_match[i].plural:
+			matches.append(false)
+		elif phrase[i].negative != to_match[i].negative:
+			matches.append(false)
+		else:
+			matches.append(true)
+	return matches
 
 func do_complete():
 	complete = true
 	ever_completed = true
 	update_colors()
+	%MatchRect.color = complete_line_color
+	%MatchRect.scale = Vector2(1.0, 1.0)
+	%MatchLabel.text = "GOOD! GO TO NEXT^"
 	$WinAudio.play(0.0)
 	if not GameManager.inst.save.completed.has(level_name):
 		GameManager.inst.save.completed.append(level_name)

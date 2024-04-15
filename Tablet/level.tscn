@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dii2mwatui4bc"]
+[gd_scene load_steps=19 format=3 uid="uid://dii2mwatui4bc"]
 
 [ext_resource type="Script" path="res://Tablet/Level.gd" id="1_71apm"]
 [ext_resource type="Script" path="res://Tablet/DrawArea.gd" id="2_e4nei"]
@@ -54,6 +54,11 @@ bg_color = Color(0.517647, 0.517647, 0.517647, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omg0m"]
 bg_color = Color(0.266667, 0.266667, 0.266667, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ni7o0"]
+font_size = 12
+outline_size = 4
+outline_color = Color(0.254902, 0.254902, 0.254902, 1)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_71apm")
@@ -138,7 +143,7 @@ position = Vector2(300, 400)
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 80.0
-offset_bottom = 80.0
+offset_bottom = 68.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.27451, 0.27451, 0.27451, 1)
 theme_override_constants/outline_size = 12
@@ -152,7 +157,7 @@ text = "<"
 offset_left = 520.0
 offset_top = 16.0
 offset_right = 584.0
-offset_bottom = 80.0
+offset_bottom = 68.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.27451, 0.27451, 0.27451, 1)
 theme_override_constants/outline_size = 12
@@ -166,7 +171,7 @@ text = ">"
 offset_left = 321.0
 offset_top = 16.0
 offset_right = 453.0
-offset_bottom = 80.0
+offset_bottom = 68.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.27451, 0.27451, 0.27451, 1)
 theme_override_constants/outline_size = 12
@@ -180,7 +185,7 @@ text = "LEVELS"
 offset_left = 178.0
 offset_top = 16.0
 offset_right = 298.0
-offset_bottom = 80.0
+offset_bottom = 68.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.27451, 0.27451, 0.27451, 1)
 theme_override_constants/outline_size = 12
@@ -189,6 +194,37 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_vkylh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qqwdj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_omg0m")
 text = "CLEAR"
+
+[node name="MatchContainer" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = 443.0
+offset_top = 73.0
+offset_right = 584.0
+offset_bottom = 96.0
+color = Color(0.780392, 0.780392, 0.780392, 1)
+
+[node name="MatchRect" type="ColorRect" parent="MatchContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.678431, 0.054902, 0.0431373, 1)
+
+[node name="MatchLabel" type="Label" parent="MatchContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GOOD! GO TO NEXT^"
+label_settings = SubResource("LabelSettings_ni7o0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="input_event" from="DrawArea" to="DrawArea" method="_on_input_event"]
 [connection signal="button_down" from="PrevButton" to="." method="to_prev_level"]

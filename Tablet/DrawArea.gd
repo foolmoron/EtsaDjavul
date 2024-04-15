@@ -187,6 +187,7 @@ func check_drawing():
 	print("Best for %s:" % level.name)
 	var sequence: Array[RuneSequenceEntry] = []
 	var ruined := false
+	var match_vals: Array[float] = []
 	for drawing in drawings:
 		var runes_to_rank = []
 		for r in RuneManager.inst.all_runes:
@@ -204,6 +205,7 @@ func check_drawing():
 		sequence.append(best_rune[0])
 		if best_error > best_rune[0].rune.max_error:
 			ruined = true
+		match_vals.append(clamp(best_rune[0].rune.max_error / best_error, 0.0, 1.0))
 		print("\t%s: %.3f" % [best_rune[2], best_error])
 
 	var cc := Time.get_ticks_usec()
@@ -211,7 +213,16 @@ func check_drawing():
 	print("\t\t elapsed b: %sus" % (cc - bb))
 	print("\t\t elapsed c: %sus" % (Time.get_ticks_usec() - cc))
 
-	var correct := not ruined and level.matches_phrase(sequence)
+	var matches := level.matches_phrase(sequence)
+	var correct := not ruined and matches.size() > 0 and matches.all(func(x): return x)
+	var match_perc := 0.0
+	for m in match_vals:
+		match_perc += m / matches.size()
+
+	level.get_node("MatchContainer/MatchRect").scale = Vector2(match_perc, 1.0)
+	level.get_node("MatchContainer/MatchRect").color = level.complete_shadow_color
+	level.get_node("MatchContainer/MatchLabel").text = str(int(match_perc * 100.0)) + "% MATCH"
+
 	if correct:
 		print("CORRECT!!!")
 		level.do_complete()
@@ -234,3 +245,7 @@ func clear_drawing():
 		l.queue_free()
 	lines.clear()
 	level.complete = false
+
+	level.get_node("MatchContainer/MatchRect").scale = Vector2(0.0, 1.0)
+	level.get_node("MatchContainer/MatchRect").color = level.complete_shadow_color
+	level.get_node("MatchContainer/MatchLabel").text = str(int(0.0 * 100.0)) + "% MATCH"

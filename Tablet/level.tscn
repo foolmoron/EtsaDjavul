@@ -211,6 +211,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.08165e-12, 1)
 color = Color(0.678431, 0.054902, 0.0431373, 1)
 
 [node name="MatchLabel" type="Label" parent="MatchContainer"]
@@ -221,7 +222,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "GOOD! GO TO NEXT^"
+text = "0% MATCH"
 label_settings = SubResource("LabelSettings_ni7o0")
 horizontal_alignment = 1
 vertical_alignment = 1

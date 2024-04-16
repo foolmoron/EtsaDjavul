@@ -221,7 +221,7 @@ func check_drawing():
 
 	level.get_node("MatchContainer/MatchRect").scale = Vector2(match_perc, 1.0)
 	level.get_node("MatchContainer/MatchRect").color = level.complete_shadow_color
-	level.get_node("MatchContainer/MatchLabel").text = str(int(match_perc * 100.0)) + "% MATCH"
+	level.get_node("MatchContainer/MatchLabel").text = str(int(match_perc * 99.0)) + "% MATCH"
 
 	if correct:
 		print("CORRECT!!!")
